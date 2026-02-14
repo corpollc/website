@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 72" width="440" height="72">
+  <!-- Corpo Lockup — Mark + Logotype -->
+  
+  <!-- Mark: The Bracket -->
+  <rect x="0" y="0" width="60" height="12" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="24" height="72" fill="#FFFFFF"/>
+  <rect x="0" y="60" width="60" height="12" fill="#FFFFFF"/>
+  
+  <!-- Logotype: CORPO in Space Grotesk Bold approximation -->
+  <!-- Using a clean geometric sans-serif rendering -->
+  <text x="78" y="50" 
+        font-family="'Space Grotesk', 'Arial Black', sans-serif" 
+        font-weight="700" 
+        font-size="44" 
+        letter-spacing="4"
+        fill="#FFFFFF">CORPO</text>
+</svg>

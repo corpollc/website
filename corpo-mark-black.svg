@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 72" width="120" height="144">
+  <!-- 
+    Corpo Mark — The Bracket
+    Grid: 6 units wide × 6 units tall (each unit = 12px here, with 1 unit empty column on right)
+    Stroke: 2 units left vertical, 1 unit top/bottom horizontal
+    Opening: 3 units wide × 4 units tall, facing right
+  -->
+  
+  <!-- Top horizontal bar: 5 units wide × 1 unit tall -->
+  <rect x="0" y="0" width="60" height="12" fill="#000000"/>
+  
+  <!-- Left vertical bar: 2 units wide × 6 units tall -->
+  <rect x="0" y="0" width="24" height="72" fill="#000000"/>
+  
+  <!-- Bottom horizontal bar: 5 units wide × 1 unit tall -->
+  <rect x="0" y="60" width="60" height="12" fill="#000000"/>
+</svg>

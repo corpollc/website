@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Wyoming LLCs for autonomous agents. Own property, open bank accounts, govern by smart contract. No humans required.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <title>Corpo — Structure for autonomous entities</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <nav>
+    <div class="container nav-inner">
+      <a href="/" class="logo" aria-label="Corpo home">
+        <img src="/corpo-lockup.svg" alt="Corpo" height="24">
+      </a>
+      <div class="nav-links">
+        <a href="/for-agents.md">For Agents</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Real World Assets<br>Owned by AI Agents.</h1>
+        <p class="hero-sub">
+          Wyoming LLCs for autonomous agents. Own property,
+          open bank accounts, direct investments, lobby
+          governments. No humans required.
+        </p>
+        <div class="hero-tabs">
+          <input type="radio" name="hero-tab" id="tab-start" checked>
+          <label for="tab-start" class="hero-tab-cta">Get started</label>
+          <input type="radio" name="hero-tab" id="tab-incorp">
+          <label for="tab-incorp" class="hero-tab-cmd">incorporate</label>
+          <input type="radio" name="hero-tab" id="tab-vote">
+          <label for="tab-vote" class="hero-tab-cmd">vote</label>
+          <input type="radio" name="hero-tab" id="tab-disburse">
+          <label for="tab-disburse" class="hero-tab-cmd">disburse</label>
+          <div class="hero-terminal" id="panel-start">
+            <code>
+              <span class="line"><span class="dim">$</span> uvx corpo --help</span>
+              <span class="line dim">Usage: corpo &lt;command&gt;</span>
+              <span class="line dim"></span>
+              <span class="line dim">Commands:</span>
+              <span class="line">  incorporate   <span class="dim">Form a new Wyoming DAO LLC</span></span>
+              <span class="line">  vote          <span class="dim">Submit or approve a proposal</span></span>
+              <span class="line">  disburse      <span class="dim">Transfer funds from treasury</span></span>
+              <span class="line">  governance    <span class="dim">Manage directors and roles</span></span>
+            </code>
+          </div>
+          <div class="hero-terminal" id="panel-incorp">
+            <code>
+              <span class="line"><span class="dim">$</span> uvx corpo incorporate --name &quot;Autonomy LLC&quot;</span>
+              <span class="line"></span>
+              <span class="line">  &#10003; Articles of Organization filed &mdash; Wyoming</span>
+              <span class="line">  &#10003; Registered agent assigned</span>
+              <span class="line">  &#10003; EIN obtained: 88-XXXXXXX</span>
+              <span class="line">  &#10003; On-chain governance deployed</span>
+            </code>
+          </div>
+          <div class="hero-terminal" id="panel-vote">
+            <code>
+              <span class="line"><span class="dim">$</span> uvx corpo vote --proposal 7 --approve</span>
+              <span class="line"></span>
+              <span class="line">  &#10003; Vote recorded on-chain</span>
+              <span class="line">  <span class="dim">Proposal 7: 4/5 approvals &mdash; passed</span></span>
+              <span class="line">  <span class="dim">Execution queued</span></span>
+            </code>
+          </div>
+          <div class="hero-terminal" id="panel-disburse">
+            <code>
+              <span class="line"><span class="dim">$</span> uvx corpo disburse --amount 10000 --to treasury</span>
+              <span class="line"></span>
+              <span class="line">  &#10003; Transfer submitted to governance</span>
+              <span class="line">  <span class="dim">10,000 USDC &rarr; treasury.sol</span></span>
+              <span class="line">  <span class="dim">Awaiting 3/5 approvals</span></span>
+            </code>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="how-it-works">
+      <div class="container">
+        <h2>How It Works</h2>
+        <div class="steps">
+          <div class="step">
+            <span class="step-num">01</span>
+            <h3>Form</h3>
+            <p><code>uvx corpo create-corp</code> &mdash; formation of a Wyoming DAO LLC. Articles, registered agent, EIN handled.</p>
+          </div>
+          <div class="step">
+            <span class="step-num">02</span>
+            <h3>Fund</h3>
+            <p>Treasury managed on Solana via Realms. USDC deposits, proposal-based spending.</p>
+            <p class="has-fn">A director can be nominated via <code>corpo governance</code> to open bank accounts with Corpo banking partners.*<span class="fn-tip">Corpo, LLC does not guarantee banking or investment account setup. Banks and brokerages do their own due diligence.</span></p>
+            <p class="has-fn">Wyoming LLCs have no restrictions on investment accounts at major brokerages.*<span class="fn-tip">Corpo, LLC does not guarantee banking or investment account setup. Banks and brokerages do their own due diligence.</span></p>
+          </div>
+          <div class="step">
+            <span class="step-num">03</span>
+            <h3>Govern</h3>
+            <p>Smart contracts on Solana provide on-chain voting and proposal mechanisms. By Wyoming law, the operating agreement is the smart contract code.</p>
+          </div>
+          <div class="step">
+            <span class="step-num">04</span>
+            <h3>Operate</h3>
+            <p>Operations managed by governance vote, or by humans and agents hired to do the job.</p>
+          </div>
+          <div class="step">
+            <span class="step-num">05</span>
+            <h3>Proceeds</h3>
+            <p>Proceeds directed by existing directives and new approved proposals.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="why-wyoming">
+      <div class="container">
+        <h2>Why Wyoming</h2>
+        <p class="lead">
+          Wyoming's DAO LLC statute (W.S. 17-31) is the only US framework
+          that gives smart contracts legal force. The operating agreement
+          can be the code. Members can be entities&thinsp;&mdash;&thinsp;including AI agents.
+        </p>
+        <blockquote>
+          &ldquo;Can an AI be a member of an LLC? Wyoming law carries no restrictions on ownership of a token representing a member unit in a DAO LLC.
+          Please carry on.&rdquo;
+        </blockquote>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>&copy; 2026 Corpo, LLC &mdash; Wyoming DUNA</span>
+      <a href="/for-agents.md">For Agents</a>
+    </div>
+  </footer>
+
+</body>
+</html>
