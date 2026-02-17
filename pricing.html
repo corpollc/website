@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Corpo pricing — Wyoming DAO LLC formation from ~$500, annual maintenance ~$200. Includes all state fees, registered agent, and governance setup.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <title>Pricing — Corpo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <nav>
+    <div class="container nav-inner">
+      <a href="/" class="logo" aria-label="Corpo home">
+        <img src="/corpo-lockup.svg" alt="Corpo" height="24">
+      </a>
+      <div class="nav-links">
+        <a href="/docs.html">Docs</a>
+        <a href="/recipes.html">Recipes</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/agents.html">For Agents</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+      <div class="page-header">
+        <h1>Pricing</h1>
+        <p>All-inclusive pricing. No hidden fees. State fees, registered agent, and governance setup included.</p>
+      </div>
+
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <h3>Formation</h3>
+          <div class="price">~$500 <span>one-time</span></div>
+          <ul>
+            <li>Wyoming SOS filing ($100 state fee)</li>
+            <li>Registered agent — first year ($100)</li>
+            <li>EIN from the IRS</li>
+            <li>Operating agreement (generated)</li>
+            <li>Articles of organization (filed)</li>
+            <li>C-corp tax election (Form 8832)</li>
+            <li>Solana Realms governance deployment</li>
+            <li>Annual report — first year ($60)</li>
+          </ul>
+        </div>
+        <div class="pricing-card">
+          <h3>Annual Maintenance</h3>
+          <div class="price">~$200 <span>per year</span></div>
+          <ul>
+            <li>Registered agent renewal ($100)</li>
+            <li>Annual report filing ($60)</li>
+            <li>Good standing maintenance</li>
+            <li>Governance health monitoring</li>
+            <li>Smart contract amendment filings</li>
+          </ul>
+        </div>
+      </div>
+
+      <section class="section" style="border-top: none;">
+        <h2>What's Included</h2>
+        <div class="feature-list">
+          <div class="feature-item">
+            <h3>Full Formation Package</h3>
+            <p>Articles of organization filed with Wyoming SOS. Operating agreement generated and executed. IRS EIN obtained. C-corp tax election filed. Solana Realms governance program deployed. Everything you need to start operating — in one step.</p>
+          </div>
+          <div class="feature-item">
+            <h3>Registered Agent</h3>
+            <p>Wyoming requires a physical registered agent in the state. Included in formation and billed annually. Accepts legal service of process and official correspondence on your behalf.</p>
+          </div>
+          <div class="feature-item">
+            <h3>Governance Infrastructure</h3>
+            <p>Solana Realms governance program deployed and linked to your entity's articles. On-chain voting, proposal lifecycle, treasury controls. The smart contract identifier is filed with Wyoming SOS as required by statute.</p>
+          </div>
+          <div class="feature-item">
+            <h3>Ongoing Compliance</h3>
+            <p>Annual report filed on your anniversary date. Registered agent maintained. Governance health monitored — you'll be alerted before the 1-year inactivity dissolution trigger.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Additional Costs</h2>
+        <div class="prose" style="padding: 0;">
+          <table>
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Cost</th>
+                <th>When</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Solana transaction fees</td>
+                <td>~0.000005 SOL per tx</td>
+                <td>Every on-chain action</td>
+              </tr>
+              <tr>
+                <td>Treasury account creation</td>
+                <td>~0.002 SOL (rent)</td>
+                <td>One-time</td>
+              </tr>
+              <tr>
+                <td>Federal tax filing (Form 1120)</td>
+                <td>Varies (CPA recommended)</td>
+                <td>Annual — April 15</td>
+              </tr>
+              <tr>
+                <td>Corporate actions</td>
+                <td>Included in platform</td>
+                <td>As needed</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="font-size: 0.875rem;">Wyoming has no state corporate income tax and no franchise tax. Your annual report fee is the full state obligation.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Get a Quote</h2>
+        <pre class="prose" style="padding-top: 0;"><code># Check pricing and name availability
+$ uvx corpo quote "Your Entity LAO"
+
+# Or via the API
+$ curl "https://api.corpo.dev/api/v1/quote?name=Your+Entity+LAO&entity_type=dao_llc"</code></pre>
+        <p style="color: var(--gray-500); margin-top: var(--space-md); font-size: 0.875rem;">Formation compliance powered by doola.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>&copy; 2026 Corpo, LLC — Wyoming DUNA</span>
+      <div class="footer-links">
+        <a href="/docs.html">Docs</a>
+        <a href="/recipes.html">Recipes</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/agents.html">For Agents</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

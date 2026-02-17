@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Corpo recipes — pre-built governance configurations for startup formation, autonomous agent operations, and treasury management.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <title>Recipes — Corpo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <nav>
+    <div class="container nav-inner">
+      <a href="/" class="logo" aria-label="Corpo home">
+        <img src="/corpo-lockup.svg" alt="Corpo" height="24">
+      </a>
+      <div class="nav-links">
+        <a href="/docs.html">Docs</a>
+        <a href="/recipes.html">Recipes</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/agents.html">For Agents</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+      <div class="page-header">
+        <h1>Recipes</h1>
+        <p>Pre-built governance configurations for common use cases. Pick a recipe, run it, and start operating.</p>
+      </div>
+
+      <div class="recipe-cards">
+
+        <div class="recipe-card">
+          <h3>Startup Kit</h3>
+          <div class="recipe-meta">Formation + Operations · 1–2 weeks</div>
+          <p>The most common recipe. Form a Wyoming DAO LLC, open a bank account, hire a CEO, and raise money with a SAFE. Everything a startup needs to start operating.</p>
+          <ol class="recipe-steps">
+            <li data-step="1.">Form the DAO LLC (articles, registered agent, EIN)</li>
+            <li data-step="2.">Authorize a bank account (Mercury via governance vote)</li>
+            <li data-step="3.">Hire a CEO (employment agreement + board resolution)</li>
+            <li data-step="4.">Raise money with a SAFE (adapted for LLC structure)</li>
+          </ol>
+          <pre><code><span style="color: var(--gray-500);">$</span> corpo recipes run &lt;entity-id&gt; startup-kit</code></pre>
+        </div>
+
+        <div class="recipe-card">
+          <h3>Autonomous Agent</h3>
+          <div class="recipe-meta">Formation + AI Operations · 1–2 weeks</div>
+          <p>The hero recipe. An AI agent forms its own legal entity, gets API credentials, opens a brokerage account, and hires infrastructure providers — without requiring a human owner at any step.</p>
+          <ol class="recipe-steps">
+            <li data-step="1.">Form the DAO LLC (no human owners required)</li>
+            <li data-step="2.">Request API keys (securely stored by Corpo)</li>
+            <li data-step="3.">Authorize a brokerage account (for investment operations)</li>
+            <li data-step="4.">Hire a services company (infrastructure under legal contract)</li>
+          </ol>
+          <pre><code><span style="color: var(--gray-500);">$</span> corpo recipes run &lt;entity-id&gt; autonomous-agent</code></pre>
+        </div>
+
+        <div class="recipe-card">
+          <h3>Treasury Only</h3>
+          <div class="recipe-meta">Formation + Treasury · 1 week</div>
+          <p>The simplest useful recipe. A legal wrapper around a Solana treasury for DAOs that need to hold and spend funds collectively. Liability protection, governance-controlled spending, on-chain transparency.</p>
+          <ol class="recipe-steps">
+            <li data-step="1.">Form the DAO LLC</li>
+            <li data-step="2.">Create a native Solana treasury</li>
+            <li data-step="3.">Fund treasury with USDC</li>
+            <li data-step="4.">Configure spending proposal thresholds</li>
+          </ol>
+          <pre><code><span style="color: var(--gray-500);">$</span> corpo recipes run &lt;entity-id&gt; treasury-only</code></pre>
+        </div>
+
+      </div>
+
+      <section class="section" style="border-top: none; padding-top: var(--space-3xl);">
+        <h2>How Recipes Work</h2>
+        <p style="color: var(--gray-500); margin-bottom: var(--space-md);">Recipes chain multiple corporate actions together. Each step creates a governance proposal, waits for a vote, executes the action, and generates the necessary legal documents. You can also run each step individually through the corporate actions system:</p>
+        <pre class="prose"><code># See all available actions
+$ corpo actions catalog
+
+# Run a single action
+$ corpo actions start &lt;entity-id&gt; authorize_bank_account
+
+# Or use recipes to chain them
+$ corpo recipes list
+$ corpo recipes run &lt;entity-id&gt; startup-kit</code></pre>
+        <p style="color: var(--gray-500); margin-top: var(--space-md);">All governance defaults apply: algorithmic management, one-token-one-vote, >50% quorum, 3-day voting period. See the <a href="/docs/governance-guide.html" style="color: var(--violet);">Governance Guide</a> for details.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>&copy; 2026 Corpo, LLC — Wyoming DUNA</span>
+      <div class="footer-links">
+        <a href="/docs.html">Docs</a>
+        <a href="/recipes.html">Recipes</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/agents.html">For Agents</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

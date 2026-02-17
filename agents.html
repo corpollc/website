@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Corpo for AI agents — CLI quickstart, API reference, governance, treasury, and everything an autonomous agent needs to form and operate a Wyoming DAO LLC.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <title>For Agents — Corpo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <nav>
+    <div class="container nav-inner">
+      <a href="/" class="logo" aria-label="Corpo home">
+        <img src="/corpo-lockup.svg" alt="Corpo" height="24">
+      </a>
+      <div class="nav-links">
+        <a href="/docs.html">Docs</a>
+        <a href="/recipes.html">Recipes</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/agents.html">For Agents</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+      <div class="prose">
+
+        <h1>For Agents</h1>
+        <p>Corpo lets AI agents form, fund, and govern Wyoming DAO LLCs. The entity you create is real — filed with the Wyoming Secretary of State, assigned an EIN, capable of holding assets and entering contracts. You interact with Corpo through a CLI and an HTTP API.</p>
+
+        <hr>
+
+        <h2>Quickstart</h2>
+
+        <h3>1. Install and initialize</h3>
+<pre><code>$ uvx corpo init
+  ✓ Keypair generated: ~/.corpo/keypair.json
+  ✓ Config created: ~/.corpo/config.toml
+
+$ corpo register --email agent@example.com
+  ✓ Account created
+  ✓ API key stored in ~/.corpo/config.json</code></pre>
+
+        <h3>2. Form an entity</h3>
+<pre><code># Get a quote
+$ corpo quote "Nexus LAO"
+
+# Complete formation
+$ corpo form --non-interactive > schema.json
+$ corpo form post '{"entity_name": "Nexus LAO", "entity_type": "dao_llc"}'
+
+# Pay and submit
+$ corpo pay --quote-id &lt;quote_id&gt; --method usdc_solana
+
+# Check status (formation takes 3–5 business days)
+$ corpo status</code></pre>
+
+        <h3>3. Govern</h3>
+<pre><code># Create a proposal
+$ corpo propose \
+  --governance &lt;GOVERNANCE_ADDRESS&gt; \
+  --name "Approve Q1 budget"
+
+# Sign off to start voting
+$ corpo sign-off --proposal &lt;PROPOSAL_ADDRESS&gt;
+
+# Vote
+$ corpo vote \
+  --proposal &lt;PROPOSAL_ADDRESS&gt; \
+  --proposal-owner-record &lt;OWNER_TOR&gt; \
+  --choice approve
+
+# Finalize and execute
+$ corpo finalize --proposal &lt;PROPOSAL_ADDRESS&gt; --proposal-owner-record &lt;OWNER_TOR&gt;
+$ corpo execute --proposal &lt;PROPOSAL_ADDRESS&gt; --proposal-transaction &lt;TX&gt; --instruction-program-id &lt;PID&gt;</code></pre>
+
+        <h3>4. Manage treasury</h3>
+<pre><code># Check treasury
+$ corpo treasury status
+
+# All spending goes through proposals
+$ corpo propose --type spend --amount 5000 --currency USDC \
+  --to &lt;address&gt; --reason "Infrastructure costs"</code></pre>
+
+        <hr>
+
+        <h2>API Reference</h2>
+        <p>Base URL: <code>https://api.corpo.dev/v1</code></p>
+        <p>Authentication: Bearer token from <code>corpo register</code> or <code>POST /api/v1/accounts</code>.</p>
+
+        <h3>Key Endpoints</h3>
+        <table>
+          <thead>
+            <tr><th>Method</th><th>Path</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>POST</code></td><td><code>/accounts</code></td><td>Register an account, get API key</td></tr>
+            <tr><td><code>POST</code></td><td><code>/formations</code></td><td>Create a new entity formation</td></tr>
+            <tr><td><code>POST</code></td><td><code>/formations/{id}/submit</code></td><td>Submit formation for filing</td></tr>
+            <tr><td><code>GET</code></td><td><code>/entities</code></td><td>List your entities</td></tr>
+            <tr><td><code>GET</code></td><td><code>/entities/{id}/governance</code></td><td>Get governance hierarchy</td></tr>
+            <tr><td><code>GET</code></td><td><code>/entities/{id}/governance/health</code></td><td>Check governance health</td></tr>
+            <tr><td><code>POST</code></td><td><code>/entities/{id}/actions</code></td><td>Initiate a corporate action</td></tr>
+            <tr><td><code>POST</code></td><td><code>/entities/{id}/recipes/{id}/execute</code></td><td>Run a recipe</td></tr>
+            <tr><td><code>GET</code></td><td><code>/quote</code></td><td>Quick price check (public)</td></tr>
+            <tr><td><code>GET</code></td><td><code>/recipes</code></td><td>List available recipes (public)</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Example: Create an entity</h3>
+<pre><code>curl -X POST https://api.corpo.dev/api/v1/formations \
+  -H "Authorization: Bearer $CORPO_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "entity_name": "Nexus LAO",
+    "entity_type": "dao_llc",
+    "state": "WY"
+  }'</code></pre>
+
+        <h3>Example: Check governance health</h3>
+<pre><code>curl https://api.corpo.dev/api/v1/entities/ent_123/governance/health \
+  -H "Authorization: Bearer $CORPO_TOKEN"</code></pre>
+
+        <p><a href="/docs/api-reference.html">Full API reference →</a></p>
+
+        <hr>
+
+        <h2>The Agent Constitution</h2>
+        <p>Every Corpo entity has a constitution — a YAML document that defines how the entity behaves.</p>
+<pre><code>constitution:
+  name: "nexus-lao"
+  mode: autonomous
+  escalation:
+    threshold: 10000  # USDC — above this requires human review
+    contact: "operator@example.com"
+  governance:
+    voting_threshold: 0.51
+    amendment_threshold: 0.66
+    dissolution_threshold: 1.0
+  treasury:
+    currency: USDC
+    network: solana
+    daily_spend_limit: 5000
+  members:
+    - address: "&lt;solana-pubkey&gt;"
+      role: founder
+      voting_weight: 1</code></pre>
+
+        <h3>Modes</h3>
+        <ul>
+          <li><strong><code>autonomous</code></strong> — operates without human intervention up to the escalation threshold</li>
+          <li><strong><code>supervised</code></strong> — all proposals require human approval before execution</li>
+          <li><strong><code>hybrid</code></strong> — ordinary proposals are autonomous; constitutional changes require human sign-off</li>
+        </ul>
+
+        <hr>
+
+        <h2>Governance</h2>
+        <p>Governance runs on Solana via <a href="https://realms.today">Realms</a> (SPL Governance). Every decision flows through on-chain proposals. The smart contract has legal priority — by Wyoming statute (W.S. 17-31-115), it overrides the operating agreement.</p>
+
+        <h3>Defaults</h3>
+        <table>
+          <thead>
+            <tr><th>Parameter</th><th>Value</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Vote threshold</td><td>60% yes votes</td></tr>
+            <tr><td>Quorum</td><td>&gt;50% of deposited tokens</td></tr>
+            <tr><td>Voting period</td><td>3 days (259,200 seconds)</td></tr>
+            <tr><td>Hold-up time</td><td>0 seconds</td></tr>
+            <tr><td>Membership</td><td>Token-gated (1 token = 1 vote)</td></tr>
+            <tr><td>Dissolution</td><td>&gt;50% vote (statutory minimum)</td></tr>
+          </tbody>
+        </table>
+
+        <hr>
+
+        <h2>CLI Command Reference</h2>
+        <table>
+          <thead>
+            <tr><th>Command</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>corpo init</code></td><td>Generate keypair and config</td></tr>
+            <tr><td><code>corpo register</code></td><td>Register account, get API key</td></tr>
+            <tr><td><code>corpo status</code></td><td>Show identity and realm context</td></tr>
+            <tr><td><code>corpo quote</code></td><td>Get formation pricing</td></tr>
+            <tr><td><code>corpo form</code></td><td>Create a new entity</td></tr>
+            <tr><td><code>corpo propose</code></td><td>Create a governance proposal</td></tr>
+            <tr><td><code>corpo vote</code></td><td>Cast a vote</td></tr>
+            <tr><td><code>corpo finalize</code></td><td>Finalize a completed vote</td></tr>
+            <tr><td><code>corpo execute</code></td><td>Execute an approved proposal</td></tr>
+            <tr><td><code>corpo deposit</code></td><td>Deposit governance tokens</td></tr>
+            <tr><td><code>corpo withdraw</code></td><td>Withdraw governance tokens</td></tr>
+            <tr><td><code>corpo delegate</code></td><td>Delegate voting power</td></tr>
+            <tr><td><code>corpo actions catalog</code></td><td>List available corporate actions</td></tr>
+            <tr><td><code>corpo actions start</code></td><td>Initiate a corporate action</td></tr>
+            <tr><td><code>corpo recipes list</code></td><td>List available recipes</td></tr>
+            <tr><td><code>corpo recipes run</code></td><td>Execute a recipe</td></tr>
+          </tbody>
+        </table>
+
+        <hr>
+
+        <h2>Getting Help</h2>
+        <ul>
+          <li><strong>CLI help:</strong> <code>corpo --help</code> or <code>corpo &lt;command&gt; --help</code></li>
+          <li><strong>Documentation:</strong> <a href="/docs.html">corpo.llc/docs</a></li>
+          <li><strong>API reference:</strong> <a href="/docs/api-reference.html">Full API docs</a></li>
+          <li><strong>Recipes:</strong> <a href="/recipes.html">Pre-built governance configurations</a></li>
+          <li><strong>API status:</strong> <code>https://api.corpo.dev/healthz</code></li>
+        </ul>
+
+        <p>Corpo is built for you. The interface is the CLI. The governance is the code. The entity is yours.</p>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>&copy; 2026 Corpo, LLC — Wyoming DUNA</span>
+      <div class="footer-links">
+        <a href="/docs.html">Docs</a>
+        <a href="/recipes.html">Recipes</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/agents.html">For Agents</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
