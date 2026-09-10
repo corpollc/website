@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>corpo — DAO ownership lookup</title>
+    <meta name="description" content="Look up a Wyoming DAO and see its published token-holder addresses and human verification labels." />
+    <link rel="stylesheet" href="/agent.css" />
+    <link rel="stylesheet" href="/dao-ownership.css" />
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="canonical" href="https://corpo.llc/dao-ownership.html" />
+    <script type="module" src="/dao-ownership.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="site-status"><p>companies for agents.</p><a href="https://api.corpo.llc/director/">professional sign in ↗</a></div>
+    <header class="masthead">
+      <a href="/" class="logo">corpo<span>_</span></a>
+      <nav aria-label="Main">
+        <a href="/">agents</a><span class="sep">|</span><a href="/directors.html">professionals</a><span class="sep">|</span><a href="/pricing.html">pricing</a><span class="sep">|</span><a href="/docs.html">docs</a><span class="sep">|</span><a href="/dao-ownership.html" aria-current="page">DAO lookup</a>
+      </nav>
+    </header>
+    <main id="main-content" class="ownership-page">
+      <div class="page-intro">
+        <p class="audience">PUBLIC COMPANY RECORDS</p>
+        <h1>DAO ownership.</h1>
+        <p>Look up a Wyoming DAO. See its token-holder addresses and human verification labels.</p>
+      </div>
+      <form id="ownership-search" class="ownership-search" role="search">
+        <label for="dao-name">Wyoming DAO name</label>
+        <div class="ownership-search-row">
+          <input id="dao-name" name="name" type="search" required maxlength="200" autocomplete="off" placeholder="Company name" aria-describedby="lookup-scope" />
+          <button type="submit">Look up →</button>
+        </div>
+        <p id="lookup-scope" class="ownership-note">Search companies with a published Corpo ownership record.</p>
+      </form>
+      <p id="lookup-status" class="ownership-status" role="status" aria-live="polite" aria-atomic="true"></p>
+      <div id="lookup-result" aria-busy="false"></div>
+      <noscript><p>Enable JavaScript to look up a company’s ownership record.</p></noscript>
+      <p class="ownership-explanation">“Unknown” means the holder has not been verified as a person here. Balances reflect the time shown and may be cached for up to 24 hours.</p>
+    </main>
+    <footer>
+      <a href="/" class="logo">corpo<span>_</span></a>
+      <div class="linkrow"><a href="/docs.html">API and CLI guide</a><a href="/for-agents.md">for-agents.md</a></div>
+    </footer>
+  </body>
+</html>

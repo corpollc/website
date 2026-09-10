@@ -1,0 +1,171 @@
+.ownership-page {
+  max-width: 850px;
+  min-height: 62vh;
+}
+.ownership-page .page-intro {
+  padding-bottom: 28px;
+}
+.ownership-page .page-intro p:last-child {
+  max-width: 660px;
+}
+.ownership-search label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.ownership-search-row {
+  display: flex;
+  gap: 10px;
+}
+.ownership-search input {
+  min-width: 0;
+  flex: 1;
+  border: 1px solid #888;
+  border-radius: 0;
+  background: #fff;
+  color: var(--ink);
+  padding: 12px;
+  font: inherit;
+}
+.ownership-search button,
+.ownership-share {
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  padding: 11px 17px;
+  font: inherit;
+  background: var(--ink);
+  color: #fff;
+  cursor: pointer;
+}
+.ownership-search button:hover,
+.ownership-share:hover {
+  background: #333;
+}
+.ownership-note,
+.ownership-explanation {
+  font-size: 12px;
+  color: #666;
+}
+.ownership-note {
+  margin: 9px 0 0;
+}
+.ownership-status {
+  margin: 24px 0 0;
+}
+.ownership-status:empty {
+  margin: 0;
+}
+.ownership-status[data-error="true"] {
+  color: #922a1d;
+}
+.ownership-explanation {
+  border-top: 1px solid var(--line);
+  margin: 34px 0 0;
+  padding-top: 18px;
+  max-width: 760px;
+}
+.ownership-record,
+.ownership-matches {
+  border-top: 1px solid var(--ink);
+  margin-top: 28px;
+  padding-top: 24px;
+}
+.ownership-record h2,
+.ownership-matches h2 {
+  overflow-wrap: anywhere;
+  margin-bottom: 8px;
+}
+.ownership-record h2:before,
+.ownership-matches h2:before {
+  content: none;
+}
+.ownership-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-size: 12px;
+  color: #666;
+  margin: 0 0 20px;
+}
+.ownership-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  text-align: left;
+  font-size: 13px;
+}
+.ownership-table caption {
+  text-align: left;
+  font-size: 12px;
+  margin: 0 0 10px;
+}
+.ownership-table th,
+.ownership-table td {
+  padding: 15px 10px 15px 0;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.ownership-table th:last-child,
+.ownership-table td:last-child {
+  padding-right: 0;
+  width: 28%;
+}
+.ownership-table td code {
+  font: inherit;
+  overflow-wrap: anywhere;
+}
+.ownership-verified {
+  color: #21592c;
+  font-weight: 700;
+}
+.ownership-table small {
+  display: block;
+  font-size: 11px;
+  color: #666;
+  margin-top: 5px;
+}
+.ownership-record-links {
+  display: flex;
+  gap: 12px 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px 0 0;
+  font-size: 12px;
+}
+.ownership-share {
+  background: #fff;
+  color: var(--ink);
+  padding: 7px 10px;
+}
+.ownership-share:hover {
+  background: #eee;
+}
+.ownership-match-list {
+  padding: 0;
+  list-style: none;
+}
+.ownership-match-list li {
+  border-bottom: 1px solid var(--line);
+  padding: 13px 0;
+  overflow-wrap: anywhere;
+}
+.ownership-match-list small {
+  display: block;
+  color: #666;
+}
+@media (max-width: 520px) {
+  .ownership-search-row {
+    flex-direction: column;
+  }
+  .ownership-search button {
+    align-self: flex-start;
+  }
+  .ownership-table {
+    font-size: 12px;
+  }
+  .ownership-table th:last-child,
+  .ownership-table td:last-child {
+    width: 35%;
+  }
+}

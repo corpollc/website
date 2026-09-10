@@ -1,0 +1,262 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Corpo formation request",
+  "description": "Filing-input field checks. Passing this schema does not establish name availability, provider availability, legal readiness, or verified governance control; the API remains authoritative.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "entity_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "duration": {
+      "type": "string"
+    },
+    "organizer_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "registered_agent_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "structure": {
+      "type": "string"
+    },
+    "capital_structure": {
+      "type": "string"
+    },
+    "operating_agreement": {
+      "type": "string"
+    },
+    "entity_type": {
+      "type": "string",
+      "enum": [
+        "dao_llc",
+        "llc",
+        "duna"
+      ],
+      "description": "Availability depends on the configured filing provider."
+    },
+    "management_type": {
+      "type": "string",
+      "enum": [
+        "member-managed",
+        "manager-managed"
+      ]
+    },
+    "addons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 0,
+      "description": "No optional add-on products are currently available; omit this field or send an empty list."
+    },
+    "dao_supplement": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "blockchain_network": {
+          "type": "string",
+          "minLength": 1
+        },
+        "governance_type": {
+          "type": "string",
+          "enum": [
+            "member-managed",
+            "algorithmically-managed"
+          ]
+        },
+        "governance_description": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "blockchain_network",
+        "governance_type"
+      ]
+    },
+    "duna_supplement": {
+      "type": "object",
+      "properties": {
+        "nonprofit_purpose": {
+          "type": "string",
+          "minLength": 1
+        },
+        "member_count_estimate": {
+          "type": "integer",
+          "minimum": 100
+        }
+      },
+      "required": [
+        "nonprofit_purpose",
+        "member_count_estimate"
+      ]
+    },
+    "principal_address": {
+      "type": "object",
+      "properties": {
+        "street1": {
+          "type": "string",
+          "minLength": 1
+        },
+        "street2": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "zip_code": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "street1",
+        "city",
+        "state",
+        "zip_code"
+      ]
+    },
+    "mailing_address": {
+      "type": "object",
+      "properties": {
+        "street1": {
+          "type": "string"
+        },
+        "street2": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "zip_code": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "organizer_address": {
+      "type": "object",
+      "properties": {
+        "street1": {
+          "type": "string"
+        },
+        "street2": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "zip_code": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "registered_agent_address": {
+      "type": "object",
+      "properties": {
+        "street1": {
+          "type": "string"
+        },
+        "street2": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "",
+            "WY",
+            "Wy",
+            "wY",
+            "wy"
+          ]
+        },
+        "zip_code": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "entity_name",
+    "entity_type",
+    "management_type",
+    "principal_address",
+    "organizer_name",
+    "registered_agent_name"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "entity_type": {
+            "const": "dao_llc"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "dao_supplement"
+        ],
+        "properties": {
+          "entity_name": {
+            "allOf": [
+              {
+                "pattern": "(^|[^A-Za-z0-9_])([Dd][Aa][Oo]|[Ll][Aa][Oo])($|[^A-Za-z0-9_])"
+              },
+              {
+                "pattern": "(^|[^A-Za-z0-9_])([Ll][Ii][Mm][Ii][Tt][Ee][Dd][ \\t\\r\\n\\f\\v]+[Ll][Ii][Aa][Bb][Ii][Ll][Ii][Tt][Yy][ \\t\\r\\n\\f\\v]+[Cc][Oo][Mm][Pp][Aa][Nn][Yy]|[Ll][Ll][Cc]|[Ll]\\.[Ll]\\.[Cc]\\.|[Ll][Ii][Mm][Ii][Tt][Ee][Dd][ \\t\\r\\n\\f\\v]+[Cc][Oo][Mm][Pp][Aa][Nn][Yy]|[Ll][Cc]|[Ll]\\.[Cc]\\.|[Ll][Tt][Dd]\\.[ \\t\\r\\n\\f\\v]+[Ll][Ii][Aa][Bb][Ii][Ll][Ii][Tt][Yy][ \\t\\r\\n\\f\\v]+[Cc][Oo][Mm][Pp][Aa][Nn][Yy]|[Ll][Tt][Dd]\\.[ \\t\\r\\n\\f\\v]+[Ll][Ii][Aa][Bb][Ii][Ll][Ii][Tt][Yy][ \\t\\r\\n\\f\\v]+[Cc][Oo]\\.|[Ll][Ii][Mm][Ii][Tt][Ee][Dd][ \\t\\r\\n\\f\\v]+[Ll][Ii][Aa][Bb][Ii][Ll][Ii][Tt][Yy][ \\t\\r\\n\\f\\v]+[Cc][Oo]\\.)($|[^A-Za-z0-9_])"
+              }
+            ],
+            "description": "Include both a separate DAO or LAO designator and an accepted LLC indicator, such as Alpine DAO LLC or LAO Alpine Limited Company. The designators may appear anywhere in the name."
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "entity_type": {
+            "const": "duna"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "duna_supplement"
+        ]
+      }
+    }
+  ],
+  "x-submit": "POST https://api.corpo.llc/api/v1/formations",
+  "x-options": "GET https://api.corpo.llc/api/v1/options/registered-agents",
+  "x-notes": [
+    "Use the appointed registered agent's actual details. Only the principal address is required by these general field checks; the filing provider may require complete additional addresses.",
+    "The API also checks name availability, configured provider/entity support, and the filing lifecycle. Catalog choices and schema-valid fields do not establish that a service or add-on is available or included in a quote.",
+    "Required string fields must be nonempty; these checks do not certify the accuracy or sufficiency of their contents.",
+    "Governance input is not proof of company control; the server reports the verified state."
+  ],
+  "$id": "https://corpo.llc/formation.schema.json"
+}
